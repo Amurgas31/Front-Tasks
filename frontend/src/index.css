@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+/* Importar Montserrat de Fontsource */
+@import "@fontsource/montserrat/400.css"; /* Regular */
+@import "@fontsource/montserrat/500.css"; /* Medium */
+@import "@fontsource/montserrat/600.css"; /* Semi-bold */
+@import "@fontsource/montserrat/700.css"; /* Bold */
+
+@theme {
+  --font-sans: "Montserrat", sans-serif;
+}
+
+:root {
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  background-color: #ffffff;
+  color: #1a1a1a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    background-color: #121212;
+    color: #f8f8f8;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
