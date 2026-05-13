@@ -9,7 +9,6 @@ export const Modal = ({ isOpen, onClose }) => {
     title: '', subject: '', description: '', priority: 'Baja', dueDate: '', status: 'Pendiente'
   });
 
-  // Este efecto rellena el formulario cuando das clic en "Editar"
   useEffect(() => {
     if (editingTask) {
       setFormData(editingTask);

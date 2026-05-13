@@ -24,7 +24,7 @@ export default function Register() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 font-sans px-4">
       <div className="max-w-md w-full bg-white p-8 rounded-xl shadow-lg relative">
         
-        {/* Modal de Éxito (El mensaje de OK) */}
+        {/* Modal de que se creo la cuenta */}
         {showSuccess && (
           <div className="absolute inset-0 bg-white/95 z-10 flex flex-col items-center justify-center rounded-xl p-6 text-center border-2 border-indigo-500">
             <h3 className="text-xl font-bold text-gray-800">¡Cuenta Creada!</h3>

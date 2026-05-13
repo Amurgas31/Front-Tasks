@@ -2,7 +2,6 @@ const STORAGE_KEY = 'mis_tareas_v1';
 const USERS_KEY = 'app_users';
 
 export const taskService = {
-  // --- Lógica de Tareas ---
   get: () => {
     const data = localStorage.getItem(STORAGE_KEY);
     return data ? JSON.parse(data) : null;
@@ -11,10 +10,8 @@ export const taskService = {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
   },
 
-  // --- Lógica de Usuarios (Registro/Login) ---
   registerUser: (userData) => {
     const users = JSON.parse(localStorage.getItem(USERS_KEY) || '[]');
-    // Verificamos si el correo ya existe
     if (users.find(u => u.email === userData.email)) {
       return { success: false, message: 'El correo ya está registrado' };
     }
@@ -26,5 +23,17 @@ export const taskService = {
   validateUser: (email, password) => {
     const users = JSON.parse(localStorage.getItem(USERS_KEY) || '[]');
     return users.find(u => u.email === email && u.password === password);
-  }
+  },
+
+  validateEmail: (email) => {
+    const users = JSON.parse(localStorage.getItem(USERS_KEY) || '[]');
+    return users.find(u => u.email === email);
+  },
+
+    upPass: (email, newPassword) => {
+      const users = JSON.parse(localStorage.getItem(USERS_KEY) || '[]');
+      const updateUsers = users.map(u => u.email === email ? {...u, password: newPassword} : u);
+      localStorage.setItem(USERS_KEY, JSON.stringify(updateUsers));
+      return {success: true, message: 'Contraseña actualizada'}
+    }
 };

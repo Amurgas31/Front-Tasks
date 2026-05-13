@@ -1,8 +1,10 @@
 import { Routes, Route, Navigate } from 'react-router';
-import { useTasks } from './hooks/useTasks'; // Usamos nuestro hook
+import { useTasks } from './hooks/useTasks';
 import { Login } from './pages/Login';
 import { Dashboard } from './pages/Dashboard';
 import Register from './pages/Register';
+import RecoveryPass from './pages/PasswordRecoveryRequest'
+import RecoveryPassOTP from './pages/PasswordRecoveryOTP'
 
 function App() {
   const { user } = useTasks();
@@ -12,8 +14,12 @@ function App() {
         <Route path="/" element={<Login />} />
 
         <Route path="/register" element={<Register />} />
+
+        <Route path="/requestRecovery" element={<RecoveryPass />} />
+
+        <Route path="/requestRecoveryOTP" element={<RecoveryPassOTP />} />
         
-        {/* Simulación de protección de rutas (Punto 30 de la rúbrica) */}
+        {/* protección de rutas */}
         <Route 
           path="/dashboard" 
           element={user ? <Dashboard /> : <Navigate to="/" />} 

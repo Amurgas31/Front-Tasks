@@ -1,5 +1,4 @@
 export const Button = ({ children, onClick, variant = 'primary', type = 'button', className = "" }) => {
-  // Definimos estilos base y variantes para reutilizar en todo el sitio
   const baseStyles = "px-4 py-2 rounded-lg transition-all font-medium text-sm md:text-base focus:outline-none focus:ring-2";
   
   const variants = {

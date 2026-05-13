@@ -4,13 +4,10 @@ import { TaskContext } from '../context/TaskContext';
 export const useTasks = () => {
   const context = useContext(TaskContext);
 
-  // Validación de seguridad: si el contexto no existe, avisamos
   if (!context) {
     throw new Error('useTasks debe usarse dentro de un TaskProvider');
   }
 
-  
-  // Extraemos TODO lo que el Contexto ofrece
   const { 
     tasks, 
     user, 
@@ -18,15 +15,15 @@ export const useTasks = () => {
     logout, 
     saveTask, 
     deleteTask, 
-    setEditingTask, 
+    setEditingTask,
+    emailGlobal,
+    setEmailGlobal,
     editingTask 
   } = context;
 
-  // Lógica de agregar (Create del CRUD)
   const addTask = (newTask) => {
     setTasks([...tasks, { ...newTask, id: Date.now() }]);
   };
-
 
   return {
     tasks,
@@ -36,6 +33,8 @@ export const useTasks = () => {
     addTask,
     deleteTask,
     setEditingTask,
+    emailGlobal,
+    setEmailGlobal,
     editingTask
   };
 };

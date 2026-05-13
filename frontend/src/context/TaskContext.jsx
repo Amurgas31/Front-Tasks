@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 import { initialTasks } from '../data/initialTasks';
-import { useEffect } from 'react'; // Agrega useEffect
+import { useEffect } from 'react';
 import { taskService } from '../services/taskService';
 
 export const TaskContext = createContext();
@@ -8,6 +8,7 @@ export const TaskContext = createContext();
 export const TaskProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [editingTask, setEditingTask] = useState(null);
+  const [emailGlobal, setEmailGlobal] = useState(null);
 
   const login = (email) => setUser({ email, role: 'estudiante' });
   const logout = () => setUser(null);
@@ -20,7 +21,6 @@ export const TaskProvider = ({ children }) => {
     taskService.save(tasks);
   }, [tasks]);
 
-  // Función unificada para Guardar (Crea si es nueva, edita si ya existe)
   const saveTask = (taskData) => {
     if (editingTask) {
       setTasks(tasks.map(t => t.id === editingTask.id ? { ...taskData, id: editingTask.id } : t));
@@ -37,6 +37,8 @@ export const TaskProvider = ({ children }) => {
       user,
       tasks,
       editingTask,
+      emailGlobal,
+      setEmailGlobal,
       setEditingTask,
       saveTask,
       deleteTask,

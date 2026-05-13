@@ -5,11 +5,11 @@ import { TaskProvider } from './context/TaskContext.jsx'
 import App from './App.jsx'
 import './index.css'
 
-// Importación de fuentes
+// fuentes
 import "@fontsource/montserrat/400.css"
 import "@fontsource/montserrat/700.css"
 
-// Seleccionamos el elemento raíz
+// elemento raíz
 const container = document.getElementById('root');
 const root = createRoot(container);
 

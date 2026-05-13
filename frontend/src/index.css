@@ -1,10 +1,9 @@
 @import "tailwindcss";
 
-/* Importar Montserrat de Fontsource */
-@import "@fontsource/montserrat/400.css"; /* Regular */
-@import "@fontsource/montserrat/500.css"; /* Medium */
-@import "@fontsource/montserrat/600.css"; /* Semi-bold */
-@import "@fontsource/montserrat/700.css"; /* Bold */
+@import "@fontsource/montserrat/400.css"; /* regular */
+@import "@fontsource/montserrat/500.css"; /* medium */
+@import "@fontsource/montserrat/600.css"; /* semi-bold */
+@import "@fontsource/montserrat/700.css"; /* bold */
 
 @theme {
   --font-sans: "Montserrat", sans-serif;

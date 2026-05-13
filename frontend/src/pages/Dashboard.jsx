@@ -1,28 +1,25 @@
 import { useState } from 'react';
-import { useTasks } from '../hooks/useTasks'; // Importamos el hook
+import { useTasks } from '../hooks/useTasks';
 import { Button } from '../components/Button.jsx';
 import { Modal } from '../components/Modal.jsx';
 
 export const Dashboard = () => {
-  // Ya no usamos useContext aquí, usamos el hook que creamos
   const { tasks, saveTask, deleteTask, logout, setEditingTask } = useTasks();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Al cerrar el modal, es importante limpiar el estado de edición
   const handleCloseModal = () => {
     setEditingTask(null);
     setIsModalOpen(false);
   };
 
-  // Estado local para el formulario
   const [newTask, setNewTask] = useState({
     title: '', subject: '', description: '', priority: 'Baja', dueDate: '', status: 'Pendiente'
   });
 
   const handleAddTask = (e) => {
     e.preventDefault();
-    addTask(newTask); // Usamos la función del hook
+    addTask(newTask);
     setIsModalOpen(false);
     setNewTask({ title: '', subject: '', description: '', priority: 'Baja', dueDate: '', status: 'Pendiente' });
   };
@@ -38,7 +35,7 @@ export const Dashboard = () => {
           <Button onClick={() => {
             setEditingTask(null);
             setIsModalOpen(true);
-          }}>+ Nueva Tarea</Button>
+          }}>Nueva Tarea +</Button>
           <Button variant="outline" onClick={logout}>Salir</Button>
         </div>
       </header>
@@ -74,11 +71,11 @@ export const Dashboard = () => {
                   <td className="p-4">
                     <div className="flex justify-center gap-4">
                       <button onClick={() => {
-                        setEditingTask(task); // Esto carga la tarea en el estado global
-                        setIsModalOpen(true); // Abre el modal
+                        setEditingTask(task); 
+                        setIsModalOpen(true); 
                       }} className="text-indigo-600 hover:text-indigo-800 text-sm font-bold">Editar</button>
                       <button
-                        onClick={() => deleteTask(task.id)} // Usamos la función del hook
+                        onClick={() => deleteTask(task.id)}
                         className="text-red-400 hover:text-red-600 text-sm font-bold"
                       >
                         Eliminar
@@ -92,7 +89,7 @@ export const Dashboard = () => {
         </div>
       </div>
 
-      {/* Modal de Creación */}
+      {/* Modal */}
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Agregar Nueva Actividad">
         <form onSubmit={handleAddTask} className="space-y-4">
           <div className="space-y-1">

@@ -5,7 +5,6 @@ import { Button } from '../components/Button';
 import { Link } from "react-router";
 import { taskService } from '../services/taskService';
 
-// login
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -17,21 +16,20 @@ export const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // 1. Validación de formato (Rúbrica Punto 5)
+    // Validación de formato
     if (!email.includes('@') || password.length < 6) {
       setError('Email inválido o contraseña muy corta (mín. 6)');
       return;
     }
 
-    // 2. Validación con los datos guardados en LocalStorage a través del Service
     const registeredUser = taskService.validateUser(email, password);
 
     if (registeredUser) {
-      // Si el usuario existe y la contraseña coincide
+      // si el usuario existe y la contraseña coincide
       login(email); 
       navigate('/dashboard'); 
     } else {
-      // Si no coinciden los datos
+      // si no coinciden los datos
       setError('Correo o contraseña incorrectos. ¿Ya te registraste?');
     }
   };
@@ -72,9 +70,15 @@ export const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="••••••••"
           />
+
+          <p className="mt-3 text-end text-sm text-gray-500">
+          <Link to="/requestRecovery" className="text-indigo-600 font-bold hover:underline transition-all">
+          ¿Olvidaste tu contraseña?
+          </Link>
+        </p>
         </div>
 
-        <Button type="submit" className="w-full py-3 shadow-lg shadow-indigo-100">
+        <Button type="submit" className="w-full py-2 shadow-lg shadow-indigo-100">
           Entrar al Sistema
         </Button>
 
